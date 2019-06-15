@@ -1,7 +1,7 @@
 ---
-title: Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1
+title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-richardson-lamps-rfc7030est-clarifications
+docname: draft-richardson-lamps-rfc7030est-clarifications-00
 
 # stand_alone: true
 
@@ -18,7 +18,6 @@ pi:    # can use array (if all yes) or hash here
   symrefs: yes
 
 author:
-
 
 - ins: M. Richardson
   name: Michael Richardson
