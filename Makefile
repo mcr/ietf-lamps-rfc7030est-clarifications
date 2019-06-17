@@ -1,4 +1,4 @@
-DRAFT:=rfc7030est-clarifications
+DRAFT:=rfc7030est-clarify
 VERSION:=$(shell ./getver ${DRAFT}.md )
 
 ${DRAFT}-${VERSION}.txt: ${DRAFT}.txt

@@ -1,7 +1,7 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-richardson-lamps-rfc7030est-clarifications-00
+docname: draft-richardson-lamps-rfc7030est-clarify-00
 
 # stand_alone: true
 
