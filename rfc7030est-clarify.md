@@ -34,12 +34,12 @@ normative:
   RFC4648:
   RFC7030:
   I-D.ietf-anima-bootstrapping-keyinfra:
-  I-D.ietf-anima-grasp-api:
 
 informative:
   RFC2616:
   RFC2045:
   RFC7230:
+  RFC7231:
   errata4384:
     title: "EST errata 4384: ASN.1 encoding error"
     target: https://www.rfc-editor.org/errata/eid4384
@@ -71,13 +71,15 @@ presented.
 
 # Introduction
 
-{[RFC7030}} defines the Enrollment over Secure Transport, or EST protocol.
+{{RFC7030}} defines the Enrollment over Secure Transport, or EST protocol.
 
 This specification defines a number of HTTP end points for certificate enrollment and management.
 The details of the transaction were defined in terms of MIME headers as defined in {{RFC2045}},
 rather than in terms of the HTTP protocol as defined in {{RFC2616}} and {{RFC7230}}.
 
-{{RFC2616}} has text specifically deprecating Content-Transfer-Encoding.
+{{RFC2616}} and later {{RFC7231}} Appendix A.5 has text specifically
+deprecating Content-Transfer-Encoding.
+
 {{RFC7030}} calls it out this header incorrectly.
 
 {{I-D.ietf-anima-bootstrapping-keyinfra}} extends {{RFC7030}}, adding new
@@ -131,13 +133,6 @@ errata 4384.
 
 errata 5108.
 
-# Definition of GRASP discovery for updated EST servers {#estgrasp}
-
-An ANIMA ACP device can discover the location of the nearest EST server using
-a {{I-D.ietf-anima-grasp-api}} M_DISCOVERY mechanism.
-
-   objective         = ["AN\_EST", F\_DISC, 255 ]
-
 # Privacy Considerations
 
 This document does not disclose any additional identifies to either active or
@@ -150,7 +145,7 @@ introduced to the security mechanism using an implicit negotiation.
 
 # IANA Considerations
 
-Allocate the name AN_EST from the {{I-D.ietf-anima-grasp-api}} "GRASP Objective Names Table".
+This document does not require any registrations.
 
 # Acknowledgements
 
