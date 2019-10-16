@@ -236,11 +236,18 @@ introduced to the security mechanism using an implicit negotiation.
 
 # IANA Considerations
 
-This document does not require any registrations.
+The ASN.1 module in Appendix A of this doucment makes use of object
+identifiers (OIDs).  This document requests that IANA register an
+OID in the SMI Security for PKIX Arc in the Module identifiers
+subarc (1.3.6.1.5.5.7.0) for the ASN.1 module.  The OID for the
+Asymmetric Decryption Key Identifier (1.2.840.113549.1.9.16.2.54)
+was previously defined in {{RFC7030}}.  IANA is requested to update
+the "Reference" column for the Asymmetric Decryption Key Identifier
+attribute to also include a reference to this doducment.
 
 # Acknowledgements
 
 This work was supported by the Huawei Technologies.
 
 --- back
-
+	
