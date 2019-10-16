@@ -40,6 +40,41 @@ normative:
   RFC4648:
   RFC7030:
   I-D.ietf-anima-bootstrapping-keyinfra:
+  X.680:
+    title: "Information technology - Abstract Syntax Notation One."
+    date: 2002
+    author:
+      org: ITU-T
+    seriesinfo:
+      ISO/IEC: 8824-1:2002
+  X.681:
+    title: "Information technology - Abstract Syntax Notation One: Information Object Specification."
+    date: 2002
+    author:
+      org: ITU-T
+    seriesinfo:
+      ISO/IEC: 8824-2:2002
+  X.682:
+    title: "Information technology - Abstract Syntax Notation One: Constraint Specification."
+    date: 2002
+    author:
+      org: ITU-T
+    seriesinfo:
+      ISO/IEC: 8824-2:2002
+   X.683:
+     title: "Information technology - Abstract Syntax Notation One: Parameterization of ASN.1 Specifications."
+     date: 2002
+     author:
+       org: ITU-T
+     seriesinfo:
+       ISO/IEC: 8824-2:2002
+   X.690:
+     title: "Information technology - ASN.1 encoding Rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)."
+     date: 2002
+     author:
+       org: ITU-T
+     seriesinfo:
+       ISO/IEC: 8825-1:2002
 
 informative:
   RFC2616:
@@ -137,88 +172,98 @@ Section 4.5.2 of {{RFC7030}} is to be replaced with the following text:
 
 ## CSR Attributes Response
 
-   If locally configured policy for an authenticated EST client
-   indicates a CSR Attributes Response is to be provided, the server
-   response MUST include an HTTP 200 response code.  An HTTP response
-   code of 204 or 404 indicates that a CSR Attributes Response is not
-   available.  Regardless of the response code, the EST server and CA
-   MAY reject any subsequent enrollment requests for any reason, e.g.,
-   incomplete CSR attributes in the request.
+If locally configured policy for an authenticated EST client indicates
+a CSR Attributes Response is to be provided, the server response MUST
+include an HTTP 200 response code.  An HTTP response code of 204 or 404
+indicates that a CSR Attributes Response is not available.  Regardless
+of the response code, the EST server and CA MAY reject any subsequent
+enrollment requests for any reason, e.g., incomplete CSR attributes in
+the request.
 
-   Responses to attribute request messages MUST be encoded as the
-   content-type of "application/csrattrs", and are to be "base64" {{RFC2045}}
-   encoded.  The syntax for application/csrattrs body is as follows:
+Responses to attribute request messages MUST be encoded as the
+content-type of "application/csrattrs", and are to be "base64" {{!RFC2045}}
+encoded.  The syntax for application/csrattrs body is as follows:
 
-~~~~~~~~~~
-{::include csrattr.asn1.txt}
-~~~~~~~~~~
-{: #csrmodule title="CSR Attributes Module"}
+~~~
+CsrAttrs ::= SEQUENCE SIZE (0..MAX) OF AttrOrOID
 
-   An EST server includes zero or more OIDs or attributes {{RFC2986}} that
-   it requests the client to use in the certification request.  The
-   client MUST ignore any OID or attribute it does not recognize.  When
-   the server encodes CSR Attributes as an empty SEQUENCE, it means that
-   the server has no specific additional information it desires in a
-   client certification request (this is functionally equivalent to an
-   HTTP response code of 204 or 404).
+AttrOrOID ::= CHOICE {
+  oid        OBJECT IDENTIFIER,
+  attribute  Attribute {{AttrSet}} }
 
-   If the CA requires a particular crypto system or use of a particular
-   signature scheme (e.g., certification of a public key based on a
-   certain elliptic curve, or signing using a certain hash algorithm) it
-   MUST provide that information in the CSR Attribute Response.  If an
-   EST server requires the linking of identity and POP information (see
-   Section 3.5), it MUST include the challengePassword OID in the CSR
-   Attributes Response.
+AttrSet ATTRIBUTE ::= { AttributesDefinedInRFC7030, ... }    
+~~~
 
-   The structure of the CSR Attributes Response SHOULD, to the greatest
-   extent possible, reflect the structure of the CSR it is requesting.
-   Requests to use a particular signature scheme (e.g. using a
-   particular hash function) are represented as an OID to be reflected
-   in the SignatureAlgorithm of the CSR.  Requests to use a particular
-   crypto system (e.g., certification of a public key based on a certain
-   elliptic curve) are represented as an attribute, to be reflected as
-   the AlgorithmIdentifier of the SubjectPublicKeyInfo, with a type
-   indicating the algorithm and the values indicating the particular
-   parameters specific to the algorithm.  Requests for descriptive
-   information from the client are made by an attribute, to be
-   represented as Attributes of the CSR, with a type indicating the
-   [RFC2985] extensionRequest and the values indicating the particular
-   attributes desired to be included in the resulting certificate's
-   extensions.
+An EST server includes zero or more OIDs or attributes {{!RFC2986}} that
+it requests the client to use in the certification request.  The client
+MUST ignore any OID or attribute it does not recognize.  When the
+server encodes CSR Attributes as an empty SEQUENCE, it means that the
+server has no specific additional information it desires in a client
+certification request (this is functionally equivalent to an HTTP
+response code of 204 or 404).
 
-   The sequence is Distinguished Encoding Rules (DER) encoded [X.690]
-   and then base64 encoded (Section 4 of [RFC4648]).  The resulting text
-   forms the application/csrattr body, without headers.
+If the CA requires a particular crypto system or use of a particular
+signature scheme (e.g., certification of a public key based on a
+certain elliptic curve, or signing using a certain hash algorithm) it
+MUST provide that information in the CSR Attribute Response.  If an
+EST server requires the linking of identity and POP information (see
+Section 3.5), it MUST include the challengePassword OID in the CSR
+Attributes Response.
 
-   For example, if a CA requests a client to submit a certification
-   request containing the challengePassword (indicating that linking of
-   identity and POP information is requested; see Section 3.5), an
-   extensionRequest with the Media Access Control (MAC) address
-   ([RFC2307]) of the client, and to use the secp384r1 elliptic curve
-   and to sign with the SHA384 hash function.  Then, it takes the
-   following:
+The structure of the CSR Attributes Response SHOULD, to the greatest
+extent possible, reflect the structure of the CSR it is requesting.
+Requests to use a particular signature scheme (e.g. using a
+particular hash function) are represented as an OID to be reflected
+in the SignatureAlgorithm of the CSR.  Requests to use a particular
+crypto system (e.g., certification of a public key based on a certain
+elliptic curve) are represented as an attribute, to be reflected as
+the AlgorithmIdentifier of the SubjectPublicKeyInfo, with a type
+indicating the algorithm and the values indicating the particular
+parameters specific to the algorithm.  Requests for descriptive
+information from the client are made by an attribute, to be
+represented as Attributes of the CSR, with a type indicating the
+{{?RFC2985}} extensionRequest and the values indicating the particular
+attributes desired to be included in the resulting certificate's
+extensions.
 
-         OID:        challengePassword (1.2.840.113549.1.9.7)
+The sequence is Distinguished Encoding Rules (DER) encoded {{X.690}}
+and then base64 encoded (Section 4 of {{!RFC4648}}).  The resulting text
+forms the application/csrattr body, without headers.
 
-         Attribute:  type = extensionRequest (1.2.840.113549.1.9.14)
-                     value = macAddress (1.3.6.1.1.1.1.22)
+For example, if a CA requests a client to submit a certification
+request containing the challengePassword (indicating that linking of
+identity and POP information is requested; see Section 3.5), an
+extensionRequest with the Media Access Control (MAC) address
+({{?RFC2307}}) of the client, and to use the secp384r1 elliptic curve
+and to sign with the SHA384 hash function.  Then, it takes the
+following:
 
-         Attribute:  type = id-ecPublicKey (1.2.840.10045.2.1)
-                     value = secp384r1 (1.3.132.0.34)
+~~~
+      OID:        challengePassword (1.2.840.113549.1.9.7)
 
-         OID:        ecdsaWithSHA384 (1.2.840.10045.4.3.3)
+      Attribute:  type = extensionRequest (1.2.840.113549.1.9.14)
+                  value = macAddress (1.3.6.1.1.1.1.22)
 
-   and encodes them into an ASN.1 SEQUENCE to produce:
+      Attribute:  type = id-ecPublicKey (1.2.840.10045.2.1)
+                  value = secp384r1 (1.3.132.0.34)
 
-       30 41 06 09 2a 86 48 86 f7 0d 01 09 07 30 12 06 07 2a 86 48 ce 3d
-       02 01 31 07 06 05 2b 81 04 00 22 30 16 06 09 2a 86 48 86 f7 0d 01
-       09 0e 31 09 06 07 2b 06 01 01 01 01 16 06 08 2a 86 48 ce 3d 04 03
-       03
+      OID:        ecdsaWithSHA384 (1.2.840.10045.4.3.3)
+~~~
 
-   and then base64 encodes the resulting ASN.1 SEQUENCE to produce:
+and encodes them into an ASN.1 SEQUENCE to produce:
+~~~
+    30 41 06 09 2a 86 48 86 f7 0d 01 09 07 30 12 06 07 2a 86 48 ce 3d
+    02 01 31 07 06 05 2b 81 04 00 22 30 16 06 09 2a 86 48 86 f7 0d 01
+    09 0e 31 09 06 07 2b 06 01 01 01 01 16 06 08 2a 86 48 ce 3d 04 03
+    03
+~~~
 
-       MEEGCSqGSIb3DQEJBzASBgcqhkjOPQIBMQcGBSuBBAAiMBYGCSqGSIb3DQEJDjEJ
-       BgcrBgEBAQEWBggqhkjOPQQDAw==
+and then base64 encodes the resulting ASN.1 SEQUENCE to produce:
+
+~~~
+    MEEGCSqGSIb3DQEJBzASBgcqhkjOPQIBMQcGBSuBBAAiMBYGCSqGSIb3DQEJDjEJ
+    BgcrBgEBAQEWBggqhkjOPQQDAw==
+~~~
 
 # Clarification of error messages for certificate enrollment operations
 
@@ -244,3 +289,61 @@ This work was supported by the Huawei Technologies.
 
 --- back
 
+# ASN.1 Module
+
+This annex provides the normative ASN.1 definitions for the structures
+described in this specification using ASN.1 as defined in {{X.680}}
+through {{X.683}}.
+
+There is no ASN.1 Module in RFC 7030.  This module has been created
+by combining the lines that are contained in the document body.
+
+ PKIXEST-2019
+     { iso(1) identified-organization(3) dod(6)
+       internet(1) security(5) mechanisms(5) pkix(7) id-mod(0)
+       id-mod-est-2019(TBD) }
+
+ DEFINITIONS IMPLICIT TAGS ::=
+ BEGIN
+
+ -- EXPORTS ALL --
+
+ IMPORTS
+
+ Attribute
+ FROM CryptographicMessageSyntax-2010  -- [RFC6268]
+      { iso(1) member-body(2) us(840) rsadsi(113549)
+        pkcs(1) pkcs-9(9) smime(16) modules(0)
+         id-mod-cms-2009(58) }
+
+ ATTRIBUTE
+ FROM PKIX-CommonTypes-2009
+    { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+      mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) } ;
+
+
+ -- CSR Attributes
+
+ CsrAttrs ::= SEQUENCE SIZE (0..MAX) OF AttrOrOID
+
+ AttrOrOID ::= CHOICE {
+   oid        OBJECT IDENTIFIER,
+   attribute  Attribute {{AttrSet}} }
+
+ AttrSet ATTRIBUTE ::= { AttributesDefinedInRFC7030, ... }
+
+
+ -- Asymmetric Decrypt Key Identifier Attribute
+
+ AttributesDefinedInRFC7030 ATTRIBUTE ::= { aa-asymmDecryptKeyID, ... }
+
+ aa-asymmDecryptKeyID ATTRIBUTE ::=
+    { TYPE AsymmetricDecryptKeyIdentifier
+      IDENTIFIED BY id-aa-asymmDecryptKeyID }
+
+ id-aa-asymmDecryptKeyID OBJECT IDENTIFIER ::= { iso(1) member-body(2)
+    us(840) rsadsi(113549) pkcs(1) pkcs9(9) smime(16) aa(2) 54 }
+
+ AsymmetricDecryptKeyIdentifier ::= OCTET STRING
+
+ END
