@@ -45,35 +45,35 @@ normative:
   RFC4648:
   RFC7030:
   I-D.ietf-anima-bootstrapping-keyinfra:
-  X.680:
+  X680:
     title: "Information technology - Abstract Syntax Notation One."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
       ISO/IEC: 8824-1:2002
-  X.681:
+  X681:
     title: "Information technology - Abstract Syntax Notation One: Information Object Specification."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
       ISO/IEC: 8824-2:2002
-  X.682:
+  X682:
     title: "Information technology - Abstract Syntax Notation One: Constraint Specification."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
       ISO/IEC: 8824-2:2002
-   X.683:
+   X683:
      title: "Information technology - Abstract Syntax Notation One: Parameterization of ASN.1 Specifications."
      date: 2002
      author:
        org: ITU-T
      seriesinfo:
        ISO/IEC: 8824-2:2002
-   X.690:
+   X690:
      title: "Information technology - ASN.1 encoding Rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)."
      date: 2002
      author:
@@ -231,7 +231,7 @@ represented as Attributes of the CSR, with a type indicating the
 attributes desired to be included in the resulting certificate's
 extensions.
 
-The sequence is Distinguished Encoding Rules (DER) encoded {{X.690}}
+The sequence is Distinguished Encoding Rules (DER) encoded {{X690}}
 and then base64 encoded (Section 4 of {{!RFC4648}}).  The resulting text
 forms the application/csrattr body, without headers.
 
@@ -304,59 +304,10 @@ This work was supported by the Huawei Technologies.
 # ASN.1 Module
 
 This annex provides the normative ASN.1 definitions for the structures
-described in this specification using ASN.1 as defined in {{X.680}}
-through {{X.683}}.
+described in this specification using ASN.1 as defined in {{X680}}
+through {{X683}}.
 
 There is no ASN.1 Module in RFC 7030.  This module has been created
 by combining the lines that are contained in the document body.
 
- PKIXEST-2019
-     { iso(1) identified-organization(3) dod(6)
-       internet(1) security(5) mechanisms(5) pkix(7) id-mod(0)
-       id-mod-est-2019(TBD) }
-
- DEFINITIONS IMPLICIT TAGS ::=
- BEGIN
-
- -- EXPORTS ALL --
-
- IMPORTS
-
- Attribute
- FROM CryptographicMessageSyntax-2010  -- [RFC6268]
-      { iso(1) member-body(2) us(840) rsadsi(113549)
-        pkcs(1) pkcs-9(9) smime(16) modules(0)
-         id-mod-cms-2009(58) }
-
- ATTRIBUTE
- FROM PKIX-CommonTypes-2009
-    { iso(1) identified-organization(3) dod(6) internet(1) security(5)
-      mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) } ;
-
-
- -- CSR Attributes
-
- CsrAttrs ::= SEQUENCE SIZE (0..MAX) OF AttrOrOID
-
- AttrOrOID ::= CHOICE {
-   oid        OBJECT IDENTIFIER,
-   attribute  Attribute {{AttrSet}} }
-
- AttrSet ATTRIBUTE ::= { AttributesDefinedInRFC7030, ... }
-
-
- -- Asymmetric Decrypt Key Identifier Attribute
-
- AttributesDefinedInRFC7030 ATTRIBUTE ::= { aa-asymmDecryptKeyID, ... }
-
- aa-asymmDecryptKeyID ATTRIBUTE ::=
-    { TYPE AsymmetricDecryptKeyIdentifier
-      IDENTIFIED BY id-aa-asymmDecryptKeyID }
-
- id-aa-asymmDecryptKeyID OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-    us(840) rsadsi(113549) pkcs(1) pkcs9(9) smime(16) aa(2) 54 }
-
- AsymmetricDecryptKeyIdentifier ::= OCTET STRING
-
- END
-
+{:include: asn1-module.txt }

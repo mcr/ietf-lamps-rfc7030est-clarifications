@@ -1,0 +1,49 @@
+PKIXEST-2019
+     { iso(1) identified-organization(3) dod(6)
+       internet(1) security(5) mechanisms(5) pkix(7) id-mod(0)
+       id-mod-est-2019(TBD) }
+
+DEFINITIONS IMPLICIT TAGS ::=
+BEGIN
+
+-- EXPORTS ALL --
+
+IMPORTS
+
+Attribute
+FROM CryptographicMessageSyntax-2010  -- [RFC6268]
+      { iso(1) member-body(2) us(840) rsadsi(113549)
+        pkcs(1) pkcs-9(9) smime(16) modules(0)
+         id-mod-cms-2009(58) }
+
+ATTRIBUTE
+FROM PKIX-CommonTypes-2009
+    { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+      mechanisms(5) pkix(7) id-mod(0) id-mod-pkixCommon-02(57) } ;
+
+
+-- CSR Attributes
+
+CsrAttrs ::= SEQUENCE SIZE (0..MAX) OF AttrOrOID
+
+AttrOrOID ::= CHOICE {
+   oid        OBJECT IDENTIFIER,
+   attribute  Attribute {{AttrSet}} }
+
+AttrSet ATTRIBUTE ::= { AttributesDefinedInRFC7030, ... }
+
+
+-- Asymmetric Decrypt Key Identifier Attribute
+
+AttributesDefinedInRFC7030 ATTRIBUTE ::= { aa-asymmDecryptKeyID, ... }
+
+aa-asymmDecryptKeyID ATTRIBUTE ::=
+    { TYPE AsymmetricDecryptKeyIdentifier
+      IDENTIFIED BY id-aa-asymmDecryptKeyID }
+
+id-aa-asymmDecryptKeyID OBJECT IDENTIFIER ::= { iso(1) member-body(2)
+    us(840) rsadsi(113549) pkcs(1) pkcs9(9) smime(16) aa(2) 54 }
+
+AsymmetricDecryptKeyIdentifier ::= OCTET STRING
+
+END
