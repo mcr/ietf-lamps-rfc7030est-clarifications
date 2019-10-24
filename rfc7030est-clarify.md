@@ -51,39 +51,38 @@ normative:
     author:
       org: ITU-T
     seriesinfo:
-      ISO/IEC: 8824-1:2002
+      ISO/IEC: "8824-1:2002"
   X681:
     title: "Information technology - Abstract Syntax Notation One: Information Object Specification."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
-      ISO/IEC: 8824-2:2002
+      ISO/IEC: "8824-2:2002"
   X682:
     title: "Information technology - Abstract Syntax Notation One: Constraint Specification."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
-      ISO/IEC: 8824-2:2002
-   X683:
-     title: "Information technology - Abstract Syntax Notation One: Parameterization of ASN.1 Specifications."
-     date: 2002
-     author:
-       org: ITU-T
-     seriesinfo:
-       ISO/IEC: 8824-2:2002
-   X690:
-     title: "Information technology - ASN.1 encoding Rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)."
-     date: 2002
-     author:
-       org: ITU-T
-     seriesinfo:
-       ISO/IEC: 8825-1:2002
+      ISO/IEC: "8824-2:2002"
+  X683:
+    title: "Information technology - Abstract Syntax Notation One: Parameterization of ASN.1 Specifications."
+    date: 2002
+    author:
+      org: ITU-T
+    seriesinfo:
+      ISO/IEC: "8824-2:2002"
+  X690:
+    title: "Information technology - ASN.1 encoding Rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)."
+    date: 2002
+    author:
+      org: ITU-T
+    seriesinfo:
+      ISO/IEC: 8825-1:2002
 
 informative:
   RFC2616:
-  RFC2045:
   RFC7230:
   RFC7231:
   errata4384:
