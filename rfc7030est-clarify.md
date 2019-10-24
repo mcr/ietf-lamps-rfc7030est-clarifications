@@ -1,7 +1,7 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-richardson-lamps-rfc7030est-clarify-03
+docname: draft-richardson-lamps-rfc7030est-clarify-04
 
 # stand_alone: true
 
@@ -309,4 +309,6 @@ through {{X683}}.
 There is no ASN.1 Module in RFC 7030.  This module has been created
 by combining the lines that are contained in the document body.
 
-{:include: asn1-module.txt }
+~~~
+{::include asn1-module.txt}
+~~~
