@@ -1,7 +1,7 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-richardson-lamps-rfc7030est-clarify-04
+docname: draft-richardson-lamps-rfc7030est-clarify-05
 
 # stand_alone: true
 
@@ -33,11 +33,6 @@ author:
   name: Wei Pan
   org: Huawei Technologies
   email: william.panwei@huawei.com
-
-- ins: S. Turner
-  name: Sean Turner
-  org: sn3rd
-  email: sean@sn3rd.com
 
 normative:
   RFC2119:
@@ -195,7 +190,7 @@ AttrOrOID ::= CHOICE {
   oid        OBJECT IDENTIFIER,
   attribute  Attribute {{AttrSet}} }
 
-AttrSet ATTRIBUTE ::= { AttributesDefinedInRFC7030, ... }    
+AttrSet ATTRIBUTE ::= { AttributesDefinedInRFC7030, ... }
 ~~~
 
 An EST server includes zero or more OIDs or attributes {{!RFC2986}} that
@@ -297,6 +292,8 @@ attribute to also include a reference to this doducment.
 # Acknowledgements
 
 This work was supported by the Huawei Technologies.
+
+The ASN.1 Module was assembled by Russ Housley and formatted by Sean Turner.
 
 --- back
 
