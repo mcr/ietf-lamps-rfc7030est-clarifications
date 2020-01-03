@@ -5,15 +5,15 @@
 LAMPS Working Group                                        M. Richardson
 Internet-Draft                                  Sandelman Software Works
 Intended status: Standards Track                               T. Werner
-Expires: May 6, 2020                                             Siemens
+Expires: July 6, 2020                                            Siemens
                                                                   W. Pan
                                                      Huawei Technologies
-                                                       November 03, 2019
+                                                        January 03, 2020
 
 
    Clarification of Enrollment over Secure Transport (EST): transfer
                           encodings and ASN.1
-              draft-richardson-lamps-rfc7030est-clarify-05
+                 draft-ietf-lamps-rfc7030est-clarify-00
 
 Abstract
 
@@ -23,12 +23,8 @@ Abstract
 
    This document deprecates the specification of "Content-Transfer-
    Encoding" headers for EST endpoints, providing a way to do this in an
-   upward compatible way.  This document additional defines a GRASP
-   discovery mechanism for EST endpoints, and specifies requirements for
-   them.
-
-   Finally, this document fixes some syntactical errors in ASN.1 that
-   was presented.
+   upward compatible way.  This document fixes some syntactical errors
+   in ASN.1 that was presented.
 
 Status of This Memo
 
@@ -45,26 +41,23 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 6, 2020.
-
-
-
-
-
-
-
-Richardson, et al.         Expires May 6, 2020                  [Page 1]
-
-Internet-Draft                 rfc7030est                  November 2019
-
+   This Internet-Draft will expire on July 6, 2020.
 
 Copyright Notice
 
-   Copyright (c) 2019 IETF Trust and the persons identified as the
+   Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
+
+
+
+Richardson, et al.        Expires July 6, 2020                  [Page 1]
+
+Internet-Draft                 rfc7030est                   January 2020
+
+
    (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
@@ -107,18 +100,19 @@ Table of Contents
    [RFC2616] and later [RFC7231] Appendix A.5 has text specifically
    deprecating Content-Transfer-Encoding.
 
-
-
-Richardson, et al.         Expires May 6, 2020                  [Page 2]
-
-Internet-Draft                 rfc7030est                  November 2019
-
-
    [RFC7030] calls it out this header incorrectly.
 
    [I-D.ietf-anima-bootstrapping-keyinfra] extends [RFC7030], adding new
    functionality, and interop testing of the protocol has revealed that
    unusual processing called out in [RFC7030] causes confusion.
+
+
+
+
+Richardson, et al.        Expires July 6, 2020                  [Page 2]
+
+Internet-Draft                 rfc7030est                   January 2020
+
 
    EST is currently specified as part of IEC 62351, and is widely used
    in Government, Utilities and Financial markets today.
@@ -161,17 +155,20 @@ Internet-Draft                 rfc7030est                  November 2019
    This document updates [RFC7030] to require the POST request and
    payload response of all endpoints in to be [RFC4648] section 4 Base64
    encoded DER.  This format is to be used regardless of whether there
-
-
-
-
-Richardson, et al.         Expires May 6, 2020                  [Page 3]
-
-Internet-Draft                 rfc7030est                  November 2019
-
-
    is any Content-Transfer-Encoding header, and any value in that header
    is to be ignored.
+
+
+
+
+
+
+
+
+Richardson, et al.        Expires July 6, 2020                  [Page 3]
+
+Internet-Draft                 rfc7030est                   January 2020
+
 
 5.  Clarification of ASN.1 for Certificate Attribute set.
 
@@ -218,17 +215,17 @@ Internet-Draft                 rfc7030est                  November 2019
 
    The structure of the CSR Attributes Response SHOULD, to the greatest
    extent possible, reflect the structure of the CSR it is requesting.
-
-
-
-Richardson, et al.         Expires May 6, 2020                  [Page 4]
-
-Internet-Draft                 rfc7030est                  November 2019
-
-
    Requests to use a particular signature scheme (e.g. using a
    particular hash function) are represented as an OID to be reflected
    in the SignatureAlgorithm of the CSR.  Requests to use a particular
+
+
+
+Richardson, et al.        Expires July 6, 2020                  [Page 4]
+
+Internet-Draft                 rfc7030est                   January 2020
+
+
    crypto system (e.g., certification of a public key based on a certain
    elliptic curve) are represented as an attribute, to be reflected as
    the AlgorithmIdentifier of the SubjectPublicKeyInfo, with a type
@@ -277,9 +274,12 @@ Internet-Draft                 rfc7030est                  November 2019
 
 
 
-Richardson, et al.         Expires May 6, 2020                  [Page 5]
+
+
+
+Richardson, et al.        Expires July 6, 2020                  [Page 5]
 
-Internet-Draft                 rfc7030est                  November 2019
+Internet-Draft                 rfc7030est                   January 2020
 
 
 6.  Clarification of error messages for certificate enrollment
@@ -323,7 +323,7 @@ Internet-Draft                 rfc7030est                  November 2019
               Pritikin, M., Richardson, M., Eckert, T., Behringer, M.,
               and K. Watsen, "Bootstrapping Remote Secure Key
               Infrastructures (BRSKI)", draft-ietf-anima-bootstrapping-
-              keyinfra-29 (work in progress), October 2019.
+              keyinfra-32 (work in progress), December 2019.
 
    [RFC2045]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
               Extensions (MIME) Part One: Format of Internet Message
@@ -333,9 +333,9 @@ Internet-Draft                 rfc7030est                  November 2019
 
 
 
-Richardson, et al.         Expires May 6, 2020                  [Page 6]
+Richardson, et al.        Expires July 6, 2020                  [Page 6]
 
-Internet-Draft                 rfc7030est                  November 2019
+Internet-Draft                 rfc7030est                   January 2020
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -389,9 +389,9 @@ Internet-Draft                 rfc7030est                  November 2019
 
 
 
-Richardson, et al.         Expires May 6, 2020                  [Page 7]
+Richardson, et al.        Expires July 6, 2020                  [Page 7]
 
-Internet-Draft                 rfc7030est                  November 2019
+Internet-Draft                 rfc7030est                   January 2020
 
 
    [errata5108]
@@ -445,9 +445,9 @@ Appendix A.  ASN.1 Module
 
 
 
-Richardson, et al.         Expires May 6, 2020                  [Page 8]
+Richardson, et al.        Expires July 6, 2020                  [Page 8]
 
-Internet-Draft                 rfc7030est                  November 2019
+Internet-Draft                 rfc7030est                   January 2020
 
 
   IMPORTS
@@ -501,9 +501,9 @@ Authors' Addresses
 
 
 
-Richardson, et al.         Expires May 6, 2020                  [Page 9]
+Richardson, et al.        Expires July 6, 2020                  [Page 9]
 
-Internet-Draft                 rfc7030est                  November 2019
+Internet-Draft                 rfc7030est                   January 2020
 
 
    Thomas Werner
@@ -557,4 +557,4 @@ Internet-Draft                 rfc7030est                  November 2019
 
 
 
-Richardson, et al.         Expires May 6, 2020                 [Page 10]
+Richardson, et al.        Expires July 6, 2020                 [Page 10]
