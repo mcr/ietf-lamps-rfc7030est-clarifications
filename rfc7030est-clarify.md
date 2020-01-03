@@ -1,9 +1,9 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-richardson-lamps-rfc7030est-clarify-05
+docname: draft-ietf-lamps-rfc7030est-clarify-00
 
-# stand_alone: true
+stand_alone: true
 
 ipr: trust200902
 area: Internet
@@ -101,10 +101,7 @@ when RFC7030 has been extended.
 
 This document deprecates the specification of "Content-Transfer-Encoding"
 headers for EST endpoints, providing a way to do this in an upward compatible
-way.  This document additional defines a GRASP discovery mechanism for EST
-endpoints, and specifies requirements for them.
-
-Finally, this document fixes some syntactical errors in ASN.1 that was
+way.  This document fixes some syntactical errors in ASN.1 that was
 presented.
 
 --- middle
