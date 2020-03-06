@@ -272,20 +272,21 @@ with type text/plain was not intended to be an error.
 Replace:
 
 ~~~
-    If the content-type is not set, the response data MUST be a plaintext
-    human-readable error message containing explanatory information
-    describing why the request was rejected (for example, indicating that
-    CSR attributes are incomplete).
+    If the content-type is not set, the response data MUST be a
+    plaintext human-readable error message containing explanatory
+    information describing why the request was rejected (for
+    example, indicating that CSR attributes are incomplete).
 ~~~
 
 with:
 
 ~~~
-    If the content-type is not set, the response data must be a plaintext
-    human-readable error message containing explanatory information
-    describing why the request was rejected (for example, indicating that
-    CSR attributes are incomplete).  Servers MAY use the "text/plain”
-    content-type [RFC2046] for human-readable errors.
+    If the content-type is not set, the response data must be a
+    plaintext human-readable error message containing explanatory
+    information describing why the request was rejected (for
+    example, indicating that CSR attributes are incomplete).
+    Servers MAY use the "text/plain” content-type [RFC2046]
+    for human-readable errors.
 ~~~
 
 ## Updating section 4.4.2: Server-Side Key Generation Response
@@ -293,16 +294,17 @@ with:
 Replace:
 
 ~~~
-    If the content-type is not set, the response data MUST be a plaintext
-    human-readable error message.
+    If the content-type is not set, the response data MUST be a
+    plaintext human-readable error message.
 ~~~
 
 with:
 
 ~~~
-    If the content-type is not set, the response data must be a plaintext
-    human-readable error message. Servers MAY use the "text/plain”
-    content-type [RFC2046] for human-readable errors.
+    If the content-type is not set, the response data must be a
+    plaintext human-readable error message.
+    Servers MAY use the "text/plain” content-type [RFC2046]
+    for human-readable errors.
 ~~~
 
 # Privacy Considerations
