@@ -1,7 +1,7 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-ietf-lamps-rfc7030est-clarify-00
+docname: draft-ietf-lamps-rfc7030est-clarify-01
 
 stand_alone: true
 
@@ -263,7 +263,47 @@ and then base64 encodes the resulting ASN.1 SEQUENCE to produce:
 
 # Clarification of error messages for certificate enrollment operations
 
-errata 5108.
+{{errata5108}} clarifies what format the error messages are to be in.
+Previously a client might be confused into believing that an error returned
+with type text/plain was not intended to be an error.
+
+## Updating section 4.2.3: Simple Enroll and Re-enroll Response
+
+Replace:
+
+~~~
+    If the content-type is not set, the response data MUST be a plaintext
+    human-readable error message containing explanatory information
+    describing why the request was rejected (for example, indicating that
+    CSR attributes are incomplete).
+~~~
+
+with:
+
+~~~
+    If the content-type is not set, the response data must be a plaintext
+    human-readable error message containing explanatory information
+    describing why the request was rejected (for example, indicating that
+    CSR attributes are incomplete).  Servers MAY use the "text/plain”
+    content-type [RFC2046] for human-readable errors.
+~~~
+
+## Updating section 4.4.2: Server-Side Key Generation Response
+
+Replace:
+
+~~~
+    If the content-type is not set, the response data MUST be a plaintext
+    human-readable error message.
+~~~
+
+with:
+
+~~~
+    If the content-type is not set, the response data must be a plaintext
+    human-readable error message. Servers MAY use the "text/plain”
+    content-type [RFC2046] for human-readable errors.
+~~~
 
 # Privacy Considerations
 
@@ -272,9 +312,8 @@ passive observer would see with {{RFC7030}}.
 
 # Security Considerations
 
-This document clarifies an existing security mechanism.  An option is
-introduced to the security mechanism using an implicit negotiation.
 
+This document clarifies an existing security mechanism.
 # IANA Considerations
 
 The ASN.1 module in Appendix A of this doucment makes use of object
@@ -282,8 +321,10 @@ identifiers (OIDs).  This document requests that IANA register an
 OID in the SMI Security for PKIX Arc in the Module identifiers
 subarc (1.3.6.1.5.5.7.0) for the ASN.1 module.  The OID for the
 Asymmetric Decryption Key Identifier (1.2.840.113549.1.9.16.2.54)
-was previously defined in {{RFC7030}}.  IANA is requested to update
-the "Reference" column for the Asymmetric Decryption Key Identifier
+was previously defined in {{RFC7030}}.
+
+IANA is requested to update the "Reference" column for the Asymmetric
+Decryption Key Identifier
 attribute to also include a reference to this doducment.
 
 # Acknowledgements
