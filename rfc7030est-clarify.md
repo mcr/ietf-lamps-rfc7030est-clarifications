@@ -322,9 +322,10 @@ attribute to also include a reference to this doducment.
 
 # Acknowledgements
 
-This work was supported by the Huawei Technologies.
+This work was supported by Huawei Technologies.
 
 The ASN.1 Module was assembled by Russ Housley and formatted by Sean Turner.
+Russ Housley provided editorial review.
 
 --- back
 
