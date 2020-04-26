@@ -76,11 +76,13 @@ normative:
       org: ITU-T
     seriesinfo:
       ISO/IEC: 8825-1:2002
-
-informative:
-  RFC2616:
-  RFC7230:
-  RFC7231:
+  IEC62351:
+    title: "Power systems management and associated information exchange - Data and communications security - Part 9: Cyber security key management for power system equipment"
+    date: 2017
+    author:
+      org: International Electrotechnical Commission
+    seriesinfo:
+      ISO/IEC: 62351-9:2017
   errata4384:
     title: "EST errata 4384: ASN.1 encoding error"
     target: https://www.rfc-editor.org/errata/eid4384
@@ -92,6 +94,11 @@ informative:
   errata5108:
     title: "EST errata 5108: use of Content-Type for error message"
     target: https://www.rfc-editor.org/errata/eid5108
+
+informative:
+  RFC2616:
+  RFC7230:
+  RFC7231:
 
 
 --- abstract
@@ -128,7 +135,7 @@ The consequence is that simply deprecating the header would remain compatible wi
 functionality, and interop testing of the protocol has revealed that unusual processing
 called out in {{RFC7030}} causes confusion.
 
-EST is currently specified as part of IEC 62351, and is widely used in Government,
+EST is currently specified as part of {{IEC62351}}, and is widely used in Government,
 Utilities and Financial markets today.
 
 This document therefore revises {{RFC7030}} to reflect the field reality, deprecating
