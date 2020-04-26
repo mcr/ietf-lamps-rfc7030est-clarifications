@@ -187,7 +187,7 @@ server has no specific additional information it desires in a client
 certification request (this is functionally equivalent to an HTTP
 response code of 204 or 404).
 
-If the CA requires a particular crypto system or use of a particular
+If the CA requires a particular cryptographic algorithm or use of a particular
 signature scheme (e.g., certification of a public key based on a
 certain elliptic curve, or signing using a certain hash algorithm) it
 MUST provide that information in the CSR Attribute Response.  If an
@@ -200,7 +200,7 @@ extent possible, reflect the structure of the CSR it is requesting.
 Requests to use a particular signature scheme (e.g. using a
 particular hash function) are represented as an OID to be reflected
 in the SignatureAlgorithm of the CSR.  Requests to use a particular
-crypto system (e.g., certification of a public key based on a certain
+cryptographic algorithm (e.g., certification of a public key based on a certain
 elliptic curve) are represented as an attribute, to be reflected as
 the AlgorithmIdentifier of the SubjectPublicKeyInfo, with a type
 indicating the algorithm and the values indicating the particular
