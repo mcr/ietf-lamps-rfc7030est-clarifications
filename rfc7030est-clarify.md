@@ -95,6 +95,10 @@ normative:
     title: "EST errata 5108: use of Content-Type for error message"
     target: https://www.rfc-editor.org/errata/eid5108
 
+  errata5904:
+    title: "EST errata 5904: use Content-Transfer-Encoding"
+    target: https://www.rfc-editor.org/errata/eid5904
+
 informative:
   RFC2616:
   RFC7230:
@@ -141,7 +145,8 @@ Utilities and Financial markets today.
 This document therefore revises {{RFC7030}} to reflect the field reality, deprecating
 the extranous field.
 
-This document deals with errata numbers {{errata4384}}, {{errata5107}}, and {{errata5108}}.
+This document deals with errata numbers {{errata4384}}, {{errata5107}}, {{errata5108}},
+and {{errata5904}}.
 
 # Terminology
 
@@ -157,6 +162,12 @@ Content-Transfer-Encoding for requests and response.
 This document updates {{RFC7030}} to require the POST request and payload response of all endpoints use Base64 encoding as specified in Section 4 of {{RFC4648}}.
 In both cases, the Distinguished Encoding Rules (DER) {{X690}} are used to produce the input for the Base64    encoding routine.
 This format is to be used regardless of any Content-Transfer-Encoding header, and any value in such a header MUST be ignored.
+
+## Whitespace processing
+
+Note that "base64" as used in the HTTP {{RFC2616}} does not permit CRLF, while the "base64" used in MIME {{RFC2045}} does.
+This specification clarifies that despite {{RFC2616}}, that white space including CR, LF, spaces (ASCII 32) and, tabs (ASCII 9) should be tolerated by receivers.
+Senders are not required to insert any kind of white space.
 
 # Clarification of ASN.1 for Certificate Attribute set.
 
