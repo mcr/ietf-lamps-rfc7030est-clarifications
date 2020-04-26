@@ -30,12 +30,10 @@ AttrOrOID ::= CHOICE {
    oid        OBJECT IDENTIFIER,
    attribute  Attribute {{AttrSet}} }
 
-AttrSet ATTRIBUTE ::= { AttributesDefinedInRFC7030, ... }
+AttrSet ATTRIBUTE ::= { aa-symmDecrytKeyID, ... }
 
 
 -- Asymmetric Decrypt Key Identifier Attribute
-
-AttributesDefinedInRFC7030 ATTRIBUTE ::= { aa-asymmDecryptKeyID, ... }
 
 aa-asymmDecryptKeyID ATTRIBUTE ::=
     { TYPE AsymmetricDecryptKeyIdentifier
