@@ -1,7 +1,7 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-ietf-lamps-rfc7030est-clarify-02
+docname: draft-ietf-lamps-rfc7030est-clarify-03
 
 stand_alone: true
 
@@ -10,8 +10,8 @@ area: Internet
 wg: LAMPS Working Group
 kw: Internet-Draft
 cat: std
+updates: RFC7030
 
-coding: us-ascii
 pi:    # can use array (if all yes) or hash here
   toc: yes
   sortrefs:   # defaults to yes
@@ -36,6 +36,7 @@ author:
 
 normative:
   RFC2119:
+  RFC8179:
   RFC2986:
   RFC4648:
   RFC7030:
@@ -96,13 +97,12 @@ informative:
 --- abstract
 
 This document updates RFC7030: Enrollment over Secure Transport (EST) to resolve
-some errata that was reported, and which has proven to have interoperability
-when RFC7030 has been extended.
+some errata that was reported, and which has proven to cause interoperability
+issues when RFC7030 was extended.
 
 This document deprecates the specification of "Content-Transfer-Encoding"
-headers for EST endpoints, providing a way to do this in an upward compatible
-way.  This document fixes some syntactical errors in ASN.1 that was
-presented.
+headers for EST endpoints.
+This document fixes some syntactical errors in ASN.1 that was presented.
 
 --- middle
 
@@ -116,8 +116,13 @@ rather than in terms of the HTTP protocol as defined in {{RFC2616}} and {{RFC723
 
 {{RFC2616}} and later {{RFC7231}} Appendix A.5 has text specifically
 deprecating Content-Transfer-Encoding.
+However, {{RFC7030}} incorrectly uses this header.
 
-{{RFC7030}} calls it out this header incorrectly.
+Changes to {{RFC7030}} to bring it inline with typical HTTP processing risk
+changes the on-wire protocol in a way that is not backwards compatible.
+However, reports from the implementers suggest that many implementations do not send the
+Content-Transfer-Encoding, and many of them ignore it.
+The consequence is that simply deprecating the header would remain compatible with current implementations.
 
 {{I-D.ietf-anima-bootstrapping-keyinfra}} extends {{RFC7030}}, adding new
 functionality, and interop testing of the protocol has revealed that unusual processing
@@ -126,11 +131,6 @@ called out in {{RFC7030}} causes confusion.
 EST is currently specified as part of IEC 62351, and is widely used in Government,
 Utilities and Financial markets today.
 
-Changes to {{RFC7030}} to bring it inline with typical HTTP processing would change
-the on-wire protocol in a way that is not backwards compatible. Reports from the field
-suggest that many implementations do not send the Content-Transfer-Encoding, and many
-of them ignore it.
-
 This document therefore revises {{RFC7030}} to reflect the field reality, deprecating
 the extranous field.
 
@@ -138,17 +138,7 @@ This document deals with errata numbers {{errata4384}}, {{errata5107}}, and {{er
 
 # Terminology
 
-The abbreviation "CTE" is used to denote the Content-Transfer-Encoding header, and the abbreviation
-"CTE-base64" is used to denote a request or response whose Content-Transfer-Encoding header contains
-the value "base64".
-
-# Requirements Language {#rfc2119}
-
-In this document, the key words "MUST", "MUST NOT", "REQUIRED",
-"SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
-and "OPTIONAL" are to be interpreted as described in BCP 14, RFC 2119
-{{RFC2119}} and indicate requirement levels for compliant STuPiD
-implementations.
+{::boilerplate bcp14}
 
 # Changes to EST endpoint processing
 
@@ -157,10 +147,9 @@ The {{RFC7030}} sections 4.1.3 (CA Certificates Response, /cacerts),
 and 4.5.2 (CSR Attributes, /csrattrs) specify the use of base64 encoding with a
 Content-Transfer-Encoding for requests and response.
 
-This document updates {{RFC7030}} to require the POST request and payload response of all
-endpoints in to be {{RFC4648}} section 4 Base64 encoded DER.  This format is to be used
-regardless of whether there is any Content-Transfer-Encoding header, and any value in that
-header is to be ignored.
+This document updates {{RFC7030}} to require the POST request and payload response of all endpoints use Base64 encoding as specified in Section 4 of {{RFC4648}}.
+In both cases, the Distinguished Encoding Rules (DER) {{X690}} are used to produce the input for the Base64    encoding routine.
+This format is to be used regardless of any Content-Transfer-Encoding header, and any value in such a header MUST be ignored.
 
 # Clarification of ASN.1 for Certificate Attribute set.
 
