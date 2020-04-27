@@ -30,7 +30,7 @@ AttrOrOID ::= CHOICE {
    oid        OBJECT IDENTIFIER,
    attribute  Attribute {{AttrSet}} }
 
-AttrSet ATTRIBUTE ::= { aa-symmDecrytKeyID, ... }
+AttrSet ATTRIBUTE ::= { aa-asymmDecrytKeyID, ... }
 
 
 -- Asymmetric Decrypt Key Identifier Attribute
