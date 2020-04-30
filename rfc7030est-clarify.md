@@ -40,7 +40,6 @@ normative:
   RFC2986:
   RFC4648:
   RFC7030:
-  I-D.ietf-anima-bootstrapping-keyinfra:
   X680:
     title: "Information technology - Abstract Syntax Notation One."
     date: 2002
@@ -100,6 +99,7 @@ normative:
     target: https://www.rfc-editor.org/errata/eid5904
 
 informative:
+  I-D.ietf-anima-bootstrapping-keyinfra:
   RFC2616:
   RFC7230:
   RFC7231:
