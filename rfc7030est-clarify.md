@@ -364,6 +364,6 @@ by combining the lines that are contained in the document body.
 # FAKE REFERENCES
 
 RFC-EDITOR: please remove this section.
-It exists just to reference {{!RFC6268}}.
+It exists just to reference {{!RFC6268}} and {{!RFC5912}}.
 
 
