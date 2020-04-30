@@ -39,6 +39,7 @@ normative:
   RFC8179:
   RFC2986:
   RFC4648:
+  RFC6268:
   RFC7030:
   X680:
     title: "Information technology - Abstract Syntax Notation One."
@@ -359,3 +360,10 @@ by combining the lines that are contained in the document body.
 ~~~
 {::include asn1-module.txt}
 ~~~
+
+# FAKE REFERENCES
+
+RFC-EDITOR: please remove this section.
+It exists just to reference {{!RFC6268}}.
+
+
