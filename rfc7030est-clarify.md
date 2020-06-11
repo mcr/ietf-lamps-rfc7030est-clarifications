@@ -195,7 +195,7 @@ AttrOrOID ::= CHOICE {
   oid        OBJECT IDENTIFIER,
   attribute  Attribute {{AttrSet}} }
 
-AttrSet ATTRIBUTE ::= { aa-asymmDecryptKeyID, ... }
+AttrSet ATTRIBUTE ::= { ... }
 ~~~
 
 An EST server includes zero or more OIDs or attributes {{!RFC2986}} that
