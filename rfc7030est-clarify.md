@@ -328,7 +328,7 @@ It does not create any new protocol mechanism.
 
 # IANA Considerations
 
-The ASN.1 module in Appendix A of this doucment makes use of object
+The ASN.1 module in Appendix A of this document makes use of object
 identifiers (OIDs).  This document requests that IANA register an
 OID in the SMI Security for PKIX Arc in the Module identifiers
 subarc (1.3.6.1.5.5.7.0) for the ASN.1 module.  The OID for the
@@ -337,7 +337,7 @@ was previously defined in {{RFC7030}}.
 
 IANA is requested to update the "Reference" column for the Asymmetric
 Decryption Key Identifier
-attribute to also include a reference to this doducment.
+attribute to also include a reference to this document.
 
 # Acknowledgements
 
@@ -354,6 +354,9 @@ This annex provides the normative ASN.1 definitions for the structures
 described in this specification using ASN.1 as defined in {{X680}}
 through {{X683}}.
 
+The ASN.1 modules makes imports from the ASN.1 modules in
+{{!RFC5212}} and {{!RFC6268}}.
+
 There is no ASN.1 Module in RFC 7030.  This module has been created
 by combining the lines that are contained in the document body.
 
@@ -361,9 +364,5 @@ by combining the lines that are contained in the document body.
 {::include asn1-module.txt}
 ~~~
 
-# FAKE REFERENCES
-
-RFC-EDITOR: please remove this section.
-It exists just to reference {{!RFC6268}} and {{!RFC5912}}.
 
 
