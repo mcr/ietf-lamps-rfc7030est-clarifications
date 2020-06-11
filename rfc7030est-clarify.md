@@ -10,7 +10,7 @@ area: Internet
 wg: LAMPS Working Group
 kw: Internet-Draft
 cat: std
-updates: RFC7030
+updates: 7030
 
 pi:    # can use array (if all yes) or hash here
   toc: yes
