@@ -4,16 +4,16 @@
 
 LAMPS Working Group                                        M. Richardson
 Internet-Draft                                  Sandelman Software Works
-Updates: RFC7030 (if approved)                                 T. Werner
+Updates: 7030 (if approved)                                    T. Werner
 Intended status: Standards Track                                 Siemens
-Expires: November 6, 2020                                         W. Pan
+Expires: December 16, 2020                                        W. Pan
                                                      Huawei Technologies
-                                                            May 05, 2020
+                                                           June 14, 2020
 
 
    Clarification of Enrollment over Secure Transport (EST): transfer
                           encodings and ASN.1
-                 draft-ietf-lamps-rfc7030est-clarify-05
+                 draft-ietf-lamps-rfc7030est-clarify-06
 
 Abstract
 
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 6, 2020.
+   This Internet-Draft will expire on December 16, 2020.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Richardson, et al.      Expires November 6, 2020                [Page 1]
+Richardson, et al.      Expires December 16, 2020               [Page 1]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
    publication of this document.  Please review these documents
@@ -87,37 +87,33 @@ Table of Contents
      10.1.  Normative References . . . . . . . . . . . . . . . . . .   7
      10.2.  Informative References . . . . . . . . . . . . . . . . .   9
    Appendix A.  ASN.1 Module . . . . . . . . . . . . . . . . . . . .  10
-   Appendix B.  FAKE REFERENCES  . . . . . . . . . . . . . . . . . .  12
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
 
-   [RFC7030] defines the Enrollment over Secure Transport, or EST
-   protocol.
-
-   This specification defines a number of HTTP end points for
-   certificate enrollment and management.  The details of the
-   transaction were defined in terms of MIME headers as defined in
-   [RFC2045], rather than in terms of the HTTP protocol as defined in
-   [RFC2616] and [RFC7230].
+   Enrollment over Secure Transport (EST) is defined in [RFC7030].  The
+   EST specification defines a number of HTTP end points for certificate
+   enrollment and management.  The details of the transaction were
+   defined in terms of MIME headers as defined in [RFC2045], rather than
+   in terms of the HTTP protocol as defined in [RFC2616] and [RFC7230].
 
    [RFC2616] and later [RFC7231] Appendix A.5 has text specifically
    deprecating Content-Transfer-Encoding.  However, [RFC7030]
    incorrectly uses this header.
 
-
-
-
-
-Richardson, et al.      Expires November 6, 2020                [Page 2]
-
-Internet-Draft                 rfc7030est                       May 2020
-
-
-   Changes to [RFC7030] to bring it inline with typical HTTP processing
-   risk changes the on-wire protocol in a way that is not backwards
-   compatible.  However, reports from the implementers suggest that many
+   Any updates to [RFC7030] to bring it inline with HTTP processing risk
+   changing the on-wire protocol in a way that is not backwards
+   compatible.  However, reports from implementers suggest that many
    implementations do not send the Content-Transfer-Encoding, and many
+
+
+
+
+Richardson, et al.      Expires December 16, 2020               [Page 2]
+
+Internet-Draft                 rfc7030est                      June 2020
+
+
    of them ignore it.  The consequence is that simply deprecating the
    header would remain compatible with current implementations.
 
@@ -129,10 +125,15 @@ Internet-Draft                 rfc7030est                       May 2020
    in Government, Utilities and Financial markets today.
 
    This document therefore revises [RFC7030] to reflect the field
-   reality, deprecating the extranous field.
+   reality, deprecating the extraneous field.
 
    This document deals with errata numbers [errata4384], [errata5107],
    [errata5108], and [errata5904].
+
+   This document deals explicitely with [errata5107] and [errata5904] in
+   Section 3.  [errata5108] is dealt with in section Section 5.
+
+   [errata4384] is closed by correcting the ASN.1 Module in Section 4.
 
 2.  Terminology
 
@@ -164,10 +165,9 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-
-Richardson, et al.      Expires November 6, 2020                [Page 3]
+Richardson, et al.      Expires December 16, 2020               [Page 3]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
 3.1.  Whitespace processing
@@ -204,7 +204,7 @@ Internet-Draft                 rfc7030est                       May 2020
      oid        OBJECT IDENTIFIER,
      attribute  Attribute {{AttrSet}} }
 
-   AttrSet ATTRIBUTE ::= { aa-asymmDecryptKeyID, ... }
+   AttrSet ATTRIBUTE ::= { ... }
 
    An EST server includes zero or more OIDs or attributes [RFC2986] that
    it requests the client to use in the certification request.  The
@@ -221,9 +221,9 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-Richardson, et al.      Expires November 6, 2020                [Page 4]
+Richardson, et al.      Expires December 16, 2020               [Page 4]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
    Response.  If an EST server requires the linking of identity and POP
@@ -277,9 +277,9 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-Richardson, et al.      Expires November 6, 2020                [Page 5]
+Richardson, et al.      Expires December 16, 2020               [Page 5]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
    and then base64 encodes the resulting ASN.1 SEQUENCE to produce:
@@ -333,9 +333,9 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-Richardson, et al.      Expires November 6, 2020                [Page 6]
+Richardson, et al.      Expires December 16, 2020               [Page 6]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
 6.  Privacy Considerations
@@ -350,7 +350,7 @@ Internet-Draft                 rfc7030est                       May 2020
 
 8.  IANA Considerations
 
-   The ASN.1 module in Appendix A of this doucment makes use of object
+   The ASN.1 module in Appendix A of this document makes use of object
    identifiers (OIDs).  This document requests that IANA register an OID
    in the SMI Security for PKIX Arc in the Module identifiers subarc
    (1.3.6.1.5.5.7.0) for the ASN.1 module.  The OID for the Asymmetric
@@ -359,7 +359,7 @@ Internet-Draft                 rfc7030est                       May 2020
 
    IANA is requested to update the "Reference" column for the Asymmetric
    Decryption Key Identifier attribute to also include a reference to
-   this doducment.
+   this document.
 
 9.  Acknowledgements
 
@@ -389,9 +389,9 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-Richardson, et al.      Expires November 6, 2020                [Page 7]
+Richardson, et al.      Expires December 16, 2020               [Page 7]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
    [errata5904]
@@ -424,10 +424,11 @@ Internet-Draft                 rfc7030est                       May 2020
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
               <https://www.rfc-editor.org/info/rfc4648>.
 
-   [RFC5912]  Hoffman, P. and J. Schaad, "New ASN.1 Modules for the
-              Public Key Infrastructure Using X.509 (PKIX)", RFC 5912,
-              DOI 10.17487/RFC5912, June 2010,
-              <https://www.rfc-editor.org/info/rfc5912>.
+   [RFC5212]  Shiomoto, K., Papadimitriou, D., Le Roux, JL., Vigoureux,
+              M., and D. Brungard, "Requirements for GMPLS-Based Multi-
+              Region and Multi-Layer Networks (MRN/MLN)", RFC 5212,
+              DOI 10.17487/RFC5212, July 2008,
+              <https://www.rfc-editor.org/info/rfc5212>.
 
    [RFC6268]  Schaad, J. and S. Turner, "Additional New ASN.1 Modules
               for the Cryptographic Message Syntax (CMS) and the Public
@@ -444,10 +445,9 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-
-Richardson, et al.      Expires November 6, 2020                [Page 8]
+Richardson, et al.      Expires December 16, 2020               [Page 8]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
@@ -501,9 +501,9 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-Richardson, et al.      Expires November 6, 2020                [Page 9]
+Richardson, et al.      Expires December 16, 2020               [Page 9]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
    [RFC2985]  Nystrom, M. and B. Kaliski, "PKCS #9: Selected Object
@@ -525,7 +525,10 @@ Appendix A.  ASN.1 Module
 
    This annex provides the normative ASN.1 definitions for the
    structures described in this specification using ASN.1 as defined in
-   [X680] through [X683].
+   [X680], [X681], [X682] and [X683].
+
+   The ASN.1 modules makes imports from the ASN.1 modules in [RFC5212]
+   and [RFC6268].
 
    There is no ASN.1 Module in RFC 7030.  This module has been created
    by combining the lines that are contained in the document body.
@@ -554,12 +557,9 @@ Appendix A.  ASN.1 Module
 
 
 
-
-
-
-Richardson, et al.      Expires November 6, 2020               [Page 10]
+Richardson, et al.      Expires December 16, 2020              [Page 10]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
 
   PKIXEST-2019
@@ -594,7 +594,7 @@ Internet-Draft                 rfc7030est                       May 2020
      oid        OBJECT IDENTIFIER,
      attribute  Attribute {{AttrSet}} }
 
-  AttrSet ATTRIBUTE ::= { aa-asymmDecrytKeyID, ... }
+  AttrSet ATTRIBUTE ::= { ... }
 
 
   -- Asymmetric Decrypt Key Identifier Attribute
@@ -613,15 +613,10 @@ Internet-Draft                 rfc7030est                       May 2020
 
 
 
-Richardson, et al.      Expires November 6, 2020               [Page 11]
+Richardson, et al.      Expires December 16, 2020              [Page 11]
 
-Internet-Draft                 rfc7030est                       May 2020
+Internet-Draft                 rfc7030est                      June 2020
 
-
-Appendix B.  FAKE REFERENCES
-
-   RFC-EDITOR: please remove this section.  It exists just to reference
-   [RFC6268] and [RFC5912].
 
 Authors' Addresses
 
@@ -669,4 +664,9 @@ Authors' Addresses
 
 
 
-Richardson, et al.      Expires November 6, 2020               [Page 12]
+
+
+
+
+
+Richardson, et al.      Expires December 16, 2020              [Page 12]

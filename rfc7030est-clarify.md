@@ -175,6 +175,111 @@ Note that "base64" as used in the HTTP {{RFC2616}} does not permit CRLF, while t
 This specification clarifies that despite {{RFC2616}}, that white space including CR, LF, spaces (ASCII 32) and, tabs (ASCII 9) should be tolerated by receivers.
 Senders are not required to insert any kind of white space.
 
+## Changes sections 4 of RFC7030
+
+### Section 4.1.3
+
+Replace:
+
+~~~~
+   A successful response MUST be a certs-only CMC Simple PKI Response,
+   as defined in [RFC5272], containing the certificates described in the
+   following paragraph.  The HTTP content-type of
+   "application/pkcs7-mime" is used.  The Simple PKI Response is sent
+   with a Content-Transfer-Encoding of "base64" [RFC2045].
+~~~~
+
+with:
+
+~~~~
+   A successful response MUST be a certs-only CMC Simple PKI Response,
+   as defined in [RFC5272], containing the certificates described in the
+   following paragraph.  The HTTP content-type of
+   "application/pkcs7-mime" is used.  The CMC Simple PKI Response is
+   encoded in base64 [RFC4648].
+~~~~
+
+### Section 4.3.1
+
+Replace:
+
+~~~~
+   If the HTTP POST to /fullcmc is not a valid Full PKI Request, the
+   server MUST reject the message.  The HTTP content-type used is
+   "application/pkcs7-mime" with an smime-type parameter "CMC-request",
+   as specified in [RFC5273].  The body of the message is the binary
+   value of the encoding of the PKI Request with a
+   Content-Transfer-Encoding of "base64" [RFC2045].
+~~~~
+
+with:
+
+~~~~
+   If the HTTP POST to /fullcmc is not a valid Full PKI Request, the
+   server MUST reject the message.  The HTTP content-type used is
+   "application/pkcs7-mime" with an smime-type parameter "CMC-request",
+   as specified in [RFC5273].  The body of the message is encoded
+   in base64 [RFC4648].
+~~~~
+
+### Section 4.3.2
+
+Replace:
+
+~~~~
+   The body of the message is the binary value of the encoding of the
+   PKI Response with a Content-Transfer-Encoding of "base64" [RFC2045].
+~~~~
+
+with:
+
+~~~~
+   The body of the message is the base64 [RFC4648] encoding of the
+   PKI Response.
+~~~~
+
+### Section 4.4.2
+
+Replace:
+
+~~~~
+   An "application/pkcs8"
+   part consists of the base64-encoded DER-encoded [X.690]
+   PrivateKeyInfo with a Content-Transfer-Encoding of "base64"
+   [RFC4648].
+~~~~
+
+with:
+
+~~~~
+   An "application/pkcs8" part consists of the base64-encoded DER-encoded [X.690]
+   PrivateKeyInfo.
+~~~~
+
+Replace:
+
+~~~~
+   In all three additional encryption cases, the EnvelopedData is
+   returned in the response as an "application/pkcs7-mime" part with an
+   smime-type parameter of "server-generated-key" and a Content-
+   Transfer-Encoding of "base64".
+~~~~
+
+with:
+
+~~~~
+   In all three additional encryption cases, the EnvelopedData is
+   returned in the response as an "application/pkcs7-mime" part
+   with an smime-type parameter of "server-generated-key". It is
+   base64 encoded [RFC4648].
+~~~~
+
+
+
+### Section 4.5.2
+
+This section is updated in its entirety in {{csrasn1}}.
+
 # Clarification of ASN.1 for Certificate Attribute set. {#csrasn1}
 
 Section 4.5.2 of {{RFC7030}} is to be replaced with the following text:
