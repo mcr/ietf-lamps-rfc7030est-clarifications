@@ -41,35 +41,35 @@ normative:
   RFC4648:
   RFC6268:
   RFC7030:
-  X680:
+  X.680:
     title: "Information technology - Abstract Syntax Notation One."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
       ISO/IEC: "8824-1:2002"
-  X681:
+  X.681:
     title: "Information technology - Abstract Syntax Notation One: Information Object Specification."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
       ISO/IEC: "8824-2:2002"
-  X682:
+  X.682:
     title: "Information technology - Abstract Syntax Notation One: Constraint Specification."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
       ISO/IEC: "8824-2:2002"
-  X683:
+  X.683:
     title: "Information technology - Abstract Syntax Notation One: Parameterization of ASN.1 Specifications."
     date: 2002
     author:
       org: ITU-T
     seriesinfo:
       ISO/IEC: "8824-2:2002"
-  X690:
+  X.690:
     title: "Information technology - ASN.1 encoding Rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)."
     date: 2002
     author:
@@ -166,13 +166,13 @@ and 4.5.2 (CSR Attributes, /csrattrs) specify the use of base64 encoding with a
 Content-Transfer-Encoding for requests and response.
 
 This document updates {{RFC7030}} to require the POST request and payload response of all endpoints use Base64 encoding as specified in Section 4 of {{RFC4648}}.
-In both cases, the Distinguished Encoding Rules (DER) {{X690}} are used to produce the input for the Base64    encoding routine.
+In both cases, the Distinguished Encoding Rules (DER) {{X.690}} are used to produce the input for the Base64    encoding routine.
 This format is to be used regardless of any Content-Transfer-Encoding header, and any value in such a header MUST be ignored.
 
 ## Whitespace processing
 
 Note that "base64" as used in the HTTP {{RFC2616}} does not permit CRLF, while the "base64" used in MIME {{RFC2045}} does.
-This specification clarifies that despite {{RFC2616}}, that white space including CR, LF, spaces (ASCII 32) and, tabs (ASCII 9) should be tolerated by receivers.
+This specification clarifies that despite {{RFC2616}}, that white space including CR, LF, spaces (ASCII 32) and, tabs (ASCII 9) SHOULD be tolerated by receivers.
 Senders are not required to insert any kind of white space.
 
 ## Changes sections 4 of RFC7030
@@ -252,8 +252,8 @@ Replace:
 with:
 
 ~~~~
-   An "application/pkcs8" part consists of the base64-encoded DER-encoded [X.690]
-   PrivateKeyInfo.
+   An "application/pkcs8" part consists of the base64-encoded
+   DER-encoded [X.690] PrivateKeyInfo.
 ~~~~
 
 Replace:
@@ -284,7 +284,7 @@ This section is updated in its entirety in {{csrasn1}}.
 
 Section 4.5.2 of {{RFC7030}} is to be replaced with the following text:
 
-## CSR Attributes Response
+4.5.2 CSR Attributes Response
 
 If locally configured policy for an authenticated EST client indicates
 a CSR Attributes Response is to be provided, the server response MUST
@@ -340,7 +340,7 @@ represented as Attributes of the CSR, with a type indicating the
 attributes desired to be included in the resulting certificate's
 extensions.
 
-The sequence is Distinguished Encoding Rules (DER) encoded {{X690}}
+The sequence is Distinguished Encoding Rules (DER) encoded {{X.690}}
 and then base64 encoded (Section 4 of {{!RFC4648}}).  The resulting text
 forms the application/csrattr body, without headers.
 
@@ -461,8 +461,8 @@ Russ Housley provided editorial review.
 # ASN.1 Module
 
 This annex provides the normative ASN.1 definitions for the structures
-described in this specification using ASN.1 as defined in {{X680}},
-{{X681}}, {{X682}} and {{X683}}.
+described in this specification using ASN.1 as defined in {{X.680}},
+{{X.681}}, {{X.682}} and {{X.683}}.
 
 The ASN.1 modules makes imports from the ASN.1 modules in
 {{!RFC5212}} and {{!RFC6268}}.
