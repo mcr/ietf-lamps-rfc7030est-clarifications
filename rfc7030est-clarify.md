@@ -1,7 +1,7 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-ietf-lamps-rfc7030est-clarify-05
+docname: draft-ietf-lamps-rfc7030est-clarify-06
 
 stand_alone: true
 
@@ -120,9 +120,8 @@ This document fixes some syntactical errors in ASN.1 that was presented.
 
 # Introduction
 
-{{RFC7030}} defines the Enrollment over Secure Transport, or EST protocol.
-
-This specification defines a number of HTTP end points for certificate enrollment and management.
+Enrollment over Secure Transport (EST) is defined in {{RFC7030}}.
+The EST specification defines a number of HTTP end points for certificate enrollment and management.
 The details of the transaction were defined in terms of MIME headers as defined in {{RFC2045}},
 rather than in terms of the HTTP protocol as defined in {{RFC2616}} and {{RFC7230}}.
 
@@ -130,9 +129,9 @@ rather than in terms of the HTTP protocol as defined in {{RFC2616}} and {{RFC723
 deprecating Content-Transfer-Encoding.
 However, {{RFC7030}} incorrectly uses this header.
 
-Changes to {{RFC7030}} to bring it inline with typical HTTP processing risk
-changes the on-wire protocol in a way that is not backwards compatible.
-However, reports from the implementers suggest that many implementations do not send the
+Any updates to {{RFC7030}} to bring it inline with HTTP processing risk
+changing the on-wire protocol in a way that is not backwards compatible.
+However, reports from implementers suggest that many implementations do not send the
 Content-Transfer-Encoding, and many of them ignore it.
 The consequence is that simply deprecating the header would remain compatible with current implementations.
 
@@ -144,16 +143,22 @@ EST is currently specified as part of {{IEC62351}}, and is widely used in Govern
 Utilities and Financial markets today.
 
 This document therefore revises {{RFC7030}} to reflect the field reality, deprecating
-the extranous field.
+the extraneous field.
 
 This document deals with errata numbers {{errata4384}}, {{errata5107}}, {{errata5108}},
 and {{errata5904}}.
+
+This document deals explicitely with {{errata5107}} and {{errata5904}} in
+{{estendpoint}}.
+{{errata5108}} is dealt with in section {{error}}.
+
+{{errata4384}} is closed by correcting the ASN.1 Module in {{csrasn1}}.
 
 # Terminology
 
 {::boilerplate bcp14}
 
-# Changes to EST endpoint processing
+# Changes to EST endpoint processing {#estendpoint}
 
 The {{RFC7030}} sections 4.1.3 (CA Certificates Response, /cacerts),
 4.3.1/4.3.2 (Full CMC, /fullcmc), 4.4.2 (Server-Side Key Generation, /serverkeygen),
@@ -170,7 +175,7 @@ Note that "base64" as used in the HTTP {{RFC2616}} does not permit CRLF, while t
 This specification clarifies that despite {{RFC2616}}, that white space including CR, LF, spaces (ASCII 32) and, tabs (ASCII 9) should be tolerated by receivers.
 Senders are not required to insert any kind of white space.
 
-# Clarification of ASN.1 for Certificate Attribute set.
+# Clarification of ASN.1 for Certificate Attribute set. {#csrasn1}
 
 Section 4.5.2 of {{RFC7030}} is to be replaced with the following text:
 
@@ -270,7 +275,7 @@ and then base64 encodes the resulting ASN.1 SEQUENCE to produce:
     BgcrBgEBAQEWBggqhkjOPQQDAw==
 ~~~
 
-# Clarification of error messages for certificate enrollment operations
+# Clarification of error messages for certificate enrollment operations {#error}
 
 {{errata5108}} clarifies what format the error messages are to be in.
 Previously a client might be confused into believing that an error returned
@@ -351,8 +356,8 @@ Russ Housley provided editorial review.
 # ASN.1 Module
 
 This annex provides the normative ASN.1 definitions for the structures
-described in this specification using ASN.1 as defined in {{X680}}
-through {{X683}}.
+described in this specification using ASN.1 as defined in {{X680}},
+{{X681}}, {{X682}} and {{X683}}.
 
 The ASN.1 modules makes imports from the ASN.1 modules in
 {{!RFC5212}} and {{!RFC6268}}.
