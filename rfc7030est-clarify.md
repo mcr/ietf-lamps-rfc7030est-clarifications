@@ -400,7 +400,7 @@ Replace:
 with:
 
 ~~~
-    If the content-type is not set, the response data must be a
+    If the content-type is not set, the response data MUST be a
     plaintext human-readable error message containing explanatory
     information describing why the request was rejected (for
     example, indicating that CSR attributes are incomplete).
