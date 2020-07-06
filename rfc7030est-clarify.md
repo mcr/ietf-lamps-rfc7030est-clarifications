@@ -1,7 +1,7 @@
 ---
 title: "Clarification of Enrollment over Secure Transport (EST): transfer encodings and ASN.1"
 abbrev: rfc7030est
-docname: draft-ietf-lamps-rfc7030est-clarify-06
+docname: draft-ietf-lamps-rfc7030est-clarify-08
 
 stand_alone: true
 
@@ -109,12 +109,12 @@ informative:
 --- abstract
 
 This document updates RFC7030: Enrollment over Secure Transport (EST) to resolve
-some errata that was reported, and which has proven to cause interoperability
+some errata that were reported, and which has proven to cause interoperability
 issues when RFC7030 was extended.
 
 This document deprecates the specification of "Content-Transfer-Encoding"
 headers for EST endpoints.
-This document fixes some syntactical errors in ASN.1 that was presented.
+This document fixes some syntactical errors in ASN.1 that were presented.
 
 --- middle
 
@@ -428,7 +428,7 @@ with:
 
 # Privacy Considerations
 
-This document does not disclose any additional identifies to either active or
+This document does not disclose any additional identities to either active or
 passive observer would see with {{RFC7030}}.
 
 # Security Considerations
