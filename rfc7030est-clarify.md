@@ -436,6 +436,8 @@ passive observer would see with {{RFC7030}}.
 This document clarifies an existing security mechanism.
 It does not create any new protocol mechanism.
 
+All security considerations from {{RFC7030}} applies also for the clarifications described in this document.
+
 # IANA Considerations
 
 The ASN.1 module in Appendix A of this document makes use of object
