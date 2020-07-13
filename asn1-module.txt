@@ -40,7 +40,7 @@ aa-asymmDecryptKeyID ATTRIBUTE ::=
       IDENTIFIED BY id-aa-asymmDecryptKeyID }
 
 id-aa-asymmDecryptKeyID OBJECT IDENTIFIER ::= { iso(1) member-body(2)
-    us(840) rsadsi(113549) pkcs(1) pkcs9(9) smime(16) aa(2) 54 }
+    us(840) rsadsi(113549) pkcs(1) pkcs-9(9) smime(16) aa(2) 54 }
 
 AsymmetricDecryptKeyIdentifier ::= OCTET STRING
 
