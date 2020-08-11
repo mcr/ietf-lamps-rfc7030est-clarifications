@@ -36,7 +36,6 @@ author:
 
 normative:
   RFC2119:
-  RFC8179:
   RFC2986:
   RFC4648:
   RFC6268:
@@ -109,7 +108,7 @@ informative:
 --- abstract
 
 This document updates RFC7030: Enrollment over Secure Transport (EST) to resolve
-some errata that were reported, and which has proven to cause interoperability
+some errata that were reported, and which have proven to cause interoperability
 issues when RFC7030 was extended.
 
 This document deprecates the specification of "Content-Transfer-Encoding"
@@ -295,7 +294,7 @@ enrollment requests for any reason, e.g., incomplete CSR attributes in
 the request.
 
 Responses to attribute request messages MUST be encoded as the
-content-type of "application/csrattrs", and are to be "base64" {{!RFC2045}}
+content-type of "application/csrattrs", and are to be "base64" {{!RFC4648}}
 encoded.  The syntax for application/csrattrs body is as follows:
 
 ~~~
@@ -420,7 +419,7 @@ Replace:
 with:
 
 ~~~
-    If the content-type is not set, the response data must be a
+    If the content-type is not set, the response data MUST be a
     plaintext human-readable error message.
     Servers MAY use the "text/plain” content-type [RFC2046]
     for human-readable errors.
@@ -467,7 +466,7 @@ described in this specification using ASN.1 as defined in {{X.680}},
 {{X.681}}, {{X.682}} and {{X.683}}.
 
 The ASN.1 modules makes imports from the ASN.1 modules in
-{{!RFC5212}} and {{!RFC6268}}.
+{{!RFC5912}} and {{!RFC6268}}.
 
 There is no ASN.1 Module in RFC 7030.  This module has been created
 by combining the lines that are contained in the document body.
